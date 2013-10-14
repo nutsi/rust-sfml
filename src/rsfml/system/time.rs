@@ -82,7 +82,7 @@ impl Time {
     * Construct a time value from a number of microseconds
     */
     #[fixed_stack_segment] #[inline(never)]
-    pub fn with_microseconds(microseconds : i64) -> Time {
+    pub fn with_microseconds(microseconds : i32) -> Time {
         Time {
             time : unsafe { ffi::sfMicroseconds(microseconds as c_long) }
         }
@@ -112,7 +112,7 @@ impl Time {
     * Return a time value as a number of microseconds
     */
     #[fixed_stack_segment] #[inline(never)]
-    pub fn as_microseconds(&self) -> i64 {
+    pub fn as_microseconds(&self) -> i32 {
         unsafe {
             ffi::sfTime_asMicroseconds(self.time)
         }        
